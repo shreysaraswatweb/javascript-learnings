@@ -67,41 +67,41 @@ let RevealBank = (function () {
 })();
 RevealBank.draw(100);
 
-// // ------------------------------------------------------------
-// /*3. Factory Function Patterns*/
-// //Definition:- It is a function which creates/returns an object. We can create multiple objects using this function.
-// //It creates new objects without using class/constructor or "new" keyword.
-// //We control object creation using a function.
+// ------------------------------------------------------------
+/*3. Factory Function Patterns*/
+//Definition:- It is a function which creates/returns an object. We can create multiple objects using this function.
+//It creates new objects without using class/constructor or "new" keyword.
+//We control object creation using a function.
 
-// function createProduct(name, price) {
-//   let stock = 10;
-//   //Returning an object
-//   return {
-//     name,
-//     price,
-//     checkStock() {
-//       console.log(`We have ${stock} pieces left.`);
-//     },
-//     buy(qty) {
-//       if (qty <= stock) {
-//         stock -= qty;
-//         console.log(`${qty} pieces booked and ${stock} pieces left.`);
-//       } else {
-//         console.log(`We have only ${stock} pieces left.`);
-//       }
-//     },
-//     refill(qty) {
-//       stock += qty;
-//       console.log(`Refilled the stock -${stock} pieces available.`);
-//     },
-//   };
-// }
-// //Both Variables have separate memory space and have their own data.
-// let iphone = createProduct("Iphone", 70000); //CreateProduct is factory function which returns an object and that object is now in iphone variable.
-// //Whenever we run createProduct function, it creates a new object.
-// // iphone.buy(6);
-// // iphone.checkStock();
-// let kitkat = createProduct("Kitkat", 10);
+function createProduct(name, price) {
+  let stock = 10;
+  //Returning an object
+  return {
+    name,
+    price,
+    checkStock() {
+      console.log(`We have ${stock} pieces left.`);
+    },
+    buy(qty) {
+      if (qty <= stock) {
+        stock -= qty;
+        console.log(`${qty} pieces booked and ${stock} pieces left.`);
+      } else {
+        console.log(`We have only ${stock} pieces left.`);
+      }
+    },
+    refill(qty) {
+      stock += qty;
+      console.log(`Refilled the stock -${stock} pieces available.`);
+    },
+  };
+}
+//Both Variables have separate memory space and have their own data.
+let iphone = createProduct("Iphone", 70000); //CreateProduct is factory function which returns an object and that object is now in iphone variable.
+//Whenever we run createProduct function, it creates a new object.
+// iphone.buy(6);
+// iphone.checkStock();
+let kitkat = createProduct("Kitkat", 10);
 
 // ------------------------------------------------------------
 

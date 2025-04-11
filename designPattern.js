@@ -77,11 +77,11 @@ function createProduct(name, price) {
   let stock = 10;
   //Returning an object
   return {
-    name,
+    name, //Shorthand property (nouns)
     price,
     checkStock() {
       console.log(`We have ${stock} pieces left.`);
-    },
+    }, //Method (Verbs) inside an object- Simply a function that belongs to an Object.
     buy(qty) {
       if (qty <= stock) {
         stock -= qty;
@@ -104,5 +104,3 @@ let iphone = createProduct("Iphone", 70000); //CreateProduct is factory function
 let kitkat = createProduct("Kitkat", 10);
 
 // ------------------------------------------------------------
-
-

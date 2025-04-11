@@ -104,3 +104,29 @@ let iphone = createProduct("Iphone", 70000); //CreateProduct is factory function
 let kitkat = createProduct("Kitkat", 10);
 
 // ------------------------------------------------------------
+
+class YoutubeChannel {
+  //Constructor is a special function that automatically runs when an object is created from a class.
+  //It is used to initialize the properties of the object.
+  constructor(name, subscribers) {
+    this.subscribers = []; //Array to hold subscribers
+  }
+  subscribe(user) { //Method to subscribe a user
+    this.subscribers.push(user); //Add user to subscribers array
+    user.update("You have subscribed to the channel"); //Notify user of subscription
+  }
+  unsubscribe(user) {}
+  notify() {}
+}
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  update(data){
+    console.log(data);
+  }
+}
+
+let koolbuddy = new YoutubeChannel("KoolBuddy", 1000); //Creating a YoutubeChannel koolbuddy(Object)
+let user1 = new User("John"); //Creating an object of User class
+koolbuddy.subscribe(user1); //User1 subscribes to KoolBuddy channel

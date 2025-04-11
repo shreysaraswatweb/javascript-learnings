@@ -1,4 +1,5 @@
-/*Module Patterns*/
+/*1. Module Patterns*/
+//Definition:- We create everything in IIFE and send only those things outside which we want to use outside.
 //Initial Invoked Function Expression (IIFE):- Everything inside this function is private
 
 // let bankBalance = 12000; //private variable for using it or changing it.
@@ -7,7 +8,7 @@ let Bank = (function () {
 
   //These functions are in IIFE so we cannot use them directly from outside
   function checkBalance() {
-    console.log(bankBalance);
+    console.log(`Your balance is ${bankBalance}`);
   }
   function setBalance(val) {
     bankBalance = val;
@@ -29,4 +30,79 @@ let Bank = (function () {
   };
 })();
 
-Bank.withdraw(11000);
+Bank.withdraw(100);
+Bank.checkBalance();
+Bank.setBalance(100);
+Bank.checkBalance();
+
+// ------------------------------------------------------------
+/*2. Revealing Module Patterns*/
+//Same as module pattern almost but we can rename the object which we are returning.
+
+let RevealBank = (function () {
+  let bankBalance = 12000; //private variable for using it or changing it.
+
+  //These functions are in IIFE so we cannot use them directly from outside
+  function checkBalance() {
+    console.log(`Your balance in Reveal${bankBalance}`);
+  }
+  function setBalance(val) {
+    bankBalance = val;
+  }
+  function withdraw(val) {
+    if (val <= bankBalance) {
+      bankBalance -= val;
+      console.log(
+        `Your withdraw in Reveal is successful. Your new balance is ${bankBalance}`
+      );
+    }
+  }
+
+  //Returning the functions which we want to use outside of IIFE
+  return {
+    check: checkBalance,
+    set: setBalance,
+    draw: withdraw,
+  };
+})();
+RevealBank.draw(100);
+
+// // ------------------------------------------------------------
+// /*3. Factory Function Patterns*/
+// //Definition:- It is a function which creates/returns an object. We can create multiple objects using this function.
+// //It creates new objects without using class/constructor or "new" keyword.
+// //We control object creation using a function.
+
+// function createProduct(name, price) {
+//   let stock = 10;
+//   //Returning an object
+//   return {
+//     name,
+//     price,
+//     checkStock() {
+//       console.log(`We have ${stock} pieces left.`);
+//     },
+//     buy(qty) {
+//       if (qty <= stock) {
+//         stock -= qty;
+//         console.log(`${qty} pieces booked and ${stock} pieces left.`);
+//       } else {
+//         console.log(`We have only ${stock} pieces left.`);
+//       }
+//     },
+//     refill(qty) {
+//       stock += qty;
+//       console.log(`Refilled the stock -${stock} pieces available.`);
+//     },
+//   };
+// }
+// //Both Variables have separate memory space and have their own data.
+// let iphone = createProduct("Iphone", 70000); //CreateProduct is factory function which returns an object and that object is now in iphone variable.
+// //Whenever we run createProduct function, it creates a new object.
+// // iphone.buy(6);
+// // iphone.checkStock();
+// let kitkat = createProduct("Kitkat", 10);
+
+// ------------------------------------------------------------
+
+
